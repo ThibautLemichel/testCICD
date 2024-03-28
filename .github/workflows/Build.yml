@@ -26,7 +26,7 @@ jobs:
         run: |
           ./hello_world
 
-            - name: Generate Artifacts
+      - name: Generate Artifacts
         run: |
           # Génération de votre rapport au format texte
           echo "Rapport de Compilation et d'Exécution - Projet COBOL" > rapport.txt
