@@ -34,6 +34,8 @@ jobs:
           /usr/bin/time -o execution_info.txt -a -f "Execution time for TriBulle: %E" ./TriBulle
           /usr/bin/time -o execution_info.txt -a -f "Execution time for Contact: %E" ./Contact
           echo "Artifact created on $(date)" >> execution_info.txt
+
+      - name: Upload artifact
         uses: actions/upload-artifact@v2
         with:
           name: program-artifacts
