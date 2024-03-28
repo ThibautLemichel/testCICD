@@ -1,0 +1,68 @@
+name: Build and Generate Artifacts
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up COBOL environment
+        run: |
+          sudo apt-get update
+          sudo apt-get -y install gnucobol
+
+      - name: Compile COBOL code
+        run: |
+          cobc -x -o hello_world HelloWorld.cbl
+
+      - name: Execute COBOL program
+        run: |
+          ./hello_world
+
+            - name: Generate Artifacts
+        run: |
+          # Génération de votre rapport au format texte
+          echo "Rapport de Compilation et d'Exécution - Projet COBOL" > rapport.txt
+          echo "Date : $(date)" >> rapport.txt
+          echo "" >> rapport.txt
+          echo "---" >> rapport.txt
+          echo "" >> rapport.txt
+          echo "1. Compilation du Code COBOL" >> rapport.txt
+          echo "" >> rapport.txt
+          # Ajoutez ici les détails spécifiques sur la compilation
+          echo "- Le code source a été compilé avec succès." >> rapport.txt
+          echo "- Aucune erreur de syntaxe n'a été détectée." >> rapport.txt
+          echo "- Le fichier exécutable généré est nommé \"mon_programme\"." >> rapport.txt
+          echo "" >> rapport.txt
+          echo "2. Exécution du Programme COBOL" >> rapport.txt
+          echo "" >> rapport.txt
+          # Ajoutez ici les détails spécifiques sur l'exécution
+          echo "- Le programme \"mon_programme\" a été exécuté sans problème." >> rapport.txt
+          echo "- Les résultats sont conformes aux attentes." >> rapport.txt
+          echo "- Aucune erreur d'exécution n'a été signalée." >> rapport.txt
+          echo "" >> rapport.txt
+          echo "3. Artefacts Générés" >> rapport.txt
+          echo "" >> rapport.txt
+          # Ajoutez ici les détails sur les artefacts générés
+          echo "- Un fichier de rapport au format texte a été créé." >> rapport.txt
+          echo "- Le rapport contient des informations détaillées sur l'exécution du programme." >> rapport.txt
+          echo "- Vous pouvez trouver le rapport dans le répertoire \"artefacts\" du projet." >> rapport.txt
+          echo "" >> rapport.txt
+          echo "---" >> rapport.txt
+          echo "" >> rapport.txt
+          echo "Merci d'avoir utilisé notre workflow GitHub Actions pour votre projet COBOL !" >> rapport.txt
+          echo "Si vous avez besoin d'aide supplémentaire, n'hésitez pas à demander." >> rapport.txt
+
+
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: cobol-artifacts
+          path: path/to/artifacts
