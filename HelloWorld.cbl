@@ -12,6 +12,6 @@
 
            ACCEPT VAR1.
            DISPLAY "Valeur de a : " VAR1.
-           DISPLAY "Est majeur ? " MAJEUR.
+      *     DISPLAY "Est majeur ? " MAJEUR.
 
            STOP RUN.
