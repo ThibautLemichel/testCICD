@@ -20,11 +20,13 @@ jobs:
 
       - name: Compile COBOL code
         run: |
-          cobc -x -o hello_world HelloWorld.cbl
+          cobc -x -o TriBulle TriBulle.cbl
+          cobc -x -o Contact GestionnaireContact.cbl
 
       - name: Execute COBOL program
         run: |
-          ./hello_world
+          ./TriBulle
+          ./Contact
 
       - name: Generate Artifacts
         run: |
@@ -59,7 +61,6 @@ jobs:
           echo "" >> rapport.txt
           echo "Merci d'avoir utilisé notre workflow GitHub Actions pour votre projet COBOL !" >> rapport.txt
           echo "Si vous avez besoin d'aide supplémentaire, n'hésitez pas à demander." >> rapport.txt
-
 
       - name: Upload Artifacts
         uses: actions/upload-artifact@v2
