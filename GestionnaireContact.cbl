@@ -50,6 +50,7 @@
                                ELSE
                                   DISPLAY
                                   "Choix non correcte, un autre chose?"
+                                  STOP RUN
                                END-IF
            END-PERFORM.
 
