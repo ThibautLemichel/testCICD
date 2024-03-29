@@ -2,8 +2,8 @@ name: Build and Generate Artifacts
 
 on:
   push:
-    tag:
-      - action
+    tags:
+      - "action"
 
 jobs:
   build:
