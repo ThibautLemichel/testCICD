@@ -2,8 +2,8 @@ name: Build and Generate Artifacts
 
 on:
   push:
-    tags:
-      - "action"
+    branch:
+      - main
 
 jobs:
   build:
@@ -44,24 +44,3 @@ jobs:
             ./artifact1
             ./artifact2
             execution_info.txt
-
-      - name: Generate documentation
-        run: |
-          echo "INPUT = ." > Doxyfile
-          echo "FILE_PATTERNS = *.cbl" >> Doxyfile
-          echo "GENERATE_HTML = YES" >> Doxyfile
-          echo "OUTPUT_DIRECTORY = docs" >> Doxyfile
-          doxygen Doxyfile
-
-      - name: Commit files
-        run: |
-          git config --local user.email "thibaut.lemichel@student.junia.com"
-          git config --local user.name "ThibautLemichel"
-          git add docs
-          git commit -m "Documentation" -a
-
-      - name: Push changes
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${{ github.ref }}
