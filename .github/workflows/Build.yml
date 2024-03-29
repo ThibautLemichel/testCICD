@@ -2,8 +2,8 @@ name: Build and Generate Artifacts
 
 on:
   push:
-    branches:
-      - main
+    tag:
+      - action
 
 jobs:
   build:
@@ -63,5 +63,5 @@ jobs:
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN.TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: ${{ github.ref }}
